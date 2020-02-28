@@ -4,7 +4,6 @@ namespace iAvatar777\assets\JqueryUpload1;
 
 use app\models\Article;
 use app\models\SiteUpdate;
-use app\services\Subscribe;
 use avatar\models\forms\Contact;
 use avatar\services\LogReader;
 use common\components\providers\ETH;
@@ -66,7 +65,7 @@ class Upload2Controller extends \yii\web\Controller
 
     /**
      */
-    public function actionFileUpload8()
+    public function actionFileUpload7()
     {
         if (Yii::$app->request->method == 'OPTIONS') return '';
 
