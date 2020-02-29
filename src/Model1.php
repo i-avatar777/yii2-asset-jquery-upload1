@@ -22,7 +22,7 @@ use yii\helpers\Json;
 /**
  *
  */
-class UploadControllerFileUpload8 extends Model
+class Model1 extends Model
 {
     /** @var  string */
     public $signature;
@@ -108,7 +108,7 @@ class UploadControllerFileUpload8 extends Model
         $ret = [
             'success' => true,
             'file'    => $fileName,
-            'url'     => \yii\helpers\Url::to('/upload/cloud/' . $folderName . '/' . $fileName, true),
+            'url'     => '/upload/cloud/' . $folderName . '/' . $fileName,
             'size'    => $size,
         ];
 

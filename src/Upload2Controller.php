@@ -69,7 +69,7 @@ class Upload2Controller extends \yii\web\Controller
     {
         if (Yii::$app->request->method == 'OPTIONS') return '';
 
-        $model = new UploadControllerFileUpload8();
+        $model = new Model1();
         $model->load(Yii::$app->request->post(), '');
         if (!$model->validate()) {
             return self::jsonErrorId(102, $model->errors);
