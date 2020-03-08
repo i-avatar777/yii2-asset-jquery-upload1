@@ -24,13 +24,21 @@ return [
     'controllerMap' => [
         // ...
         'upload2' => '\iAvatar777\assets\JqueryUpload1\Upload2Controller',
-        // ...
     ],
 ];
 ```
 
 Файл `params.php`
 
+```php
+return [ 
+    // ...
+    'widgetFileUpload7' => [
+        'uploadDirectory' => '@webroot/upload',   
+        'inputName'       => 'uploadfile',
+    ],
+];
+```
 
 ## Пример использования
 

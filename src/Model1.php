@@ -73,9 +73,9 @@ class Model1 extends Model
     public function action()
     {
         // '@upload/cloud'
-        $upload_dir = Yii::getAlias(Yii::$app->params['uploadDirectory']);
+        $upload_dir = Yii::getAlias(Yii::$app->params['widgetFileUpload7']['uploadDirectory']);
 
-        $Upload = new extras\FileUpload('imgfile');
+        $Upload = new extras\FileUpload(Yii::$app->params['widgetFileUpload7']['inputName']);
         $Upload->sizeLimit = 100 * 1000 * 1000;
 
         $ext = strtolower($Upload->getExtension()); // Get the extension of the uploaded file
