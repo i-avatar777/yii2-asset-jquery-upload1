@@ -109,9 +109,9 @@ class Model1 extends Model
             'success' => true,
             'file'    => $fileName,
             'url'     => '/upload/cloud/' . $folderName . '/' . $fileName,
+            'path'    => $path,
             'size'    => $size,
         ];
-
 
         return $ret;
     }
