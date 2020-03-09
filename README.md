@@ -34,8 +34,10 @@ return [
 return [ 
     // ...
     'widgetFileUpload7' => [
-        'uploadDirectory' => '@webroot/upload',   
-        'inputName'       => 'uploadfile',
+        'uploadDirectory'               => '@webroot/upload',   
+        'inputName'                     => 'uploadfile',
+        'Origin'                        => '*',
+        'Access-Control-Allow-Origin'   => '*',
     ],
 ];
 ```
