@@ -104,12 +104,13 @@ class Model1 extends Model
         $size = filesize($path . $Upload->newFileName);
 
         $fileName = $Upload->getFileName();
+        $upload_dir1 = Yii::getAlias('@webroot');
 
         $ret = [
             'success' => true,
             'file'    => $fileName,
-            'url'     => '/upload/cloud/' . $folderName . '/' . $fileName,
-            'path'    => $path,
+            'url'     => substr($path, strlen($upload_dir1)) . $fileName,
+            'path'    => $path . $fileName,
             'size'    => $size,
         ];
 

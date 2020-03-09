@@ -49,7 +49,7 @@ class Upload2Controller extends \yii\web\Controller
     {
         return [
             'corsFilter' => [
-                'class' => \yii\filters\Cors::className(),
+                'class' => '\yii\filters\Cors',
                 'cors'  => [
                     'Origin'                           => [ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.Origin', '*')],
                     'Access-Control-Allow-Origin'      => [ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.Access-Control-Allow-Origin', '*')],
