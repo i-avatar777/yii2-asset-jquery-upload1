@@ -8,6 +8,24 @@ https://www.draw.io/#G1VN37M-uP9PQ34gl28gsd-di1D7nK2Tlf
 
 ![](image/model.png)
 
+## Инсталяция
+
+Для инсталяции библиотеки используйте composer:
+
+```json
+{
+    "require": {
+        "i-avatar777/yii2-asset-jquery-upload1": "*"
+    }
+}
+```
+
+Или через команду
+
+```
+composer require i-avatar777/yii2-asset-jquery-upload1
+```
+
 ## Настройка
 
 Файл `config.php`
