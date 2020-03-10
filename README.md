@@ -1,14 +1,8 @@
 # yii2-asset-jquery-upload1
 
-
-
 Ресурс и контроллер для Yii2 который позволяет создать загрузчик файла на сервер
 
 Содержит контроллер и действие для обработки прогресса загрузки и сохранения файла в файловой системе.
-
-uploadDirectory in src/UploadControllerFileUpload8.php
-
-сайт с которого принимать запросы
 
 https://www.draw.io/#G1VN37M-uP9PQ34gl28gsd-di1D7nK2Tlf
 
