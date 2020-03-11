@@ -78,6 +78,21 @@ class Upload2Controller extends \yii\web\Controller
         return $model->action();
     }
 
+    /**
+     */
+    public function actionFileUpload8()
+    {
+        if (Yii::$app->request->method == 'OPTIONS') return '';
+
+        $model = new Model1();
+        $model->load(Yii::$app->request->post(), '');
+        if (!$model->validate()) {
+            return self::jsonErrorId(102, $model->errors);
+        }
+
+        return $model->action();
+    }
+
     public function actionSessionProgress()
     {
         Yii::$app->session->open();
