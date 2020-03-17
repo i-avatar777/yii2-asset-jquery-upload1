@@ -73,9 +73,10 @@ class Model1 extends Model
     public function action()
     {
         // '@upload/cloud'
-        $upload_dir = Yii::getAlias(Yii::$app->params['widgetFileUpload7']['uploadDirectory']);
+        $upload_dir = Yii::getAlias(ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.uploadDirectory', '@webroot/upload/cloud'));
 
-        $Upload = new extras\FileUpload(Yii::$app->params['widgetFileUpload7']['inputName']);
+        $Upload = new extras\FileUpload(ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.inputName', 'imgname'));
+
         $Upload->sizeLimit = 100 * 1000 * 1000;
 
         $ext = strtolower($Upload->getExtension()); // Get the extension of the uploaded file
@@ -104,13 +105,15 @@ class Model1 extends Model
         $size = filesize($path . $Upload->newFileName);
 
         $fileName = $Upload->getFileName();
-        $upload_dir1 = Yii::getAlias('@webroot');
+        $upload_dir1 = \Yii::getAlias('@webroot');
+
+        copy($_FILES['imgfile']['tmp_name'], $path . $fileName);
 
         $ret = [
             'success' => true,
             'file'    => $fileName,
-            'url'     => substr($path, strlen($upload_dir1)) . $fileName,
-            'path'    => $path . $fileName,
+            'url'     => \yii\helpers\Url::to(substr($path, strlen($upload_dir1)) . $fileName, true),
+//            'path'    => $path . $fileName,
             'size'    => $size,
         ];
 
