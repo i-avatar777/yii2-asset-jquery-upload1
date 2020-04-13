@@ -44,24 +44,24 @@ class Upload2Controller extends \yii\web\Controller
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
     }
 
-    // https://learn.javascript.ru/xhr-crossdomain
-    public function behaviors()
-    {
-        return [
-            'corsFilter' => [
-                'class' => '\yii\filters\Cors',
-                'cors'  => [
-                    'Origin'                           => [ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.Origin', '*')],
-                    'Access-Control-Allow-Origin'      => [ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.Access-Control-Allow-Origin', '*')],
-                    'Access-Control-Request-Method'    => ['POST', 'OPTIONS'],
-                    'Access-Control-Request-Headers'   => ['*'],
-                    'Access-Control-Allow-Credentials' => true,
-                    'Access-Control-Max-Age'           => 86400,
-                    'Access-Control-Expose-Headers'    => [],
-                ],
-            ],
-        ];
-    }
+//    // https://learn.javascript.ru/xhr-crossdomain
+//    public function behaviors()
+//    {
+//        return [
+//            'corsFilter' => [
+//                'class' => '\yii\filters\Cors',
+//                'cors'  => [
+//                    'Origin'                           => [ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.Origin', '*')],
+//                    'Access-Control-Allow-Origin'      => [ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.Access-Control-Allow-Origin', '*')],
+//                    'Access-Control-Request-Method'    => ['POST', 'OPTIONS'],
+//                    'Access-Control-Request-Headers'   => ['*'],
+//                    'Access-Control-Allow-Credentials' => true,
+//                    'Access-Control-Max-Age'           => 86400,
+//                    'Access-Control-Expose-Headers'    => [],
+//                ],
+//            ],
+//        ];
+//    }
 
     /**
      */
