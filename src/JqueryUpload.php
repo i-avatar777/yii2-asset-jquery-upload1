@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 class JqueryUpload extends AssetBundle
 {
 
-    public $sourcePath = '@vendor/LPology/Simple-Ajax-Uploader';
+    public $sourcePath = '@vendor/i-avatar777/yii2-asset-jquery-upload1/Simple-Ajax-Uploader';
 
     public $js = [
         'SimpleAjaxUploader.min.js',

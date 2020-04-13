@@ -1,6 +1,6 @@
 {
   "name": "i-avatar777/yii2-asset-jquery-upload1",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Ресурс для Yii2 который позволяет создать загрузчик файла",
   "keywords": ["yii2-asset-jquery-upload1"],
   "type": "project",
@@ -8,7 +8,6 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.4.0",
-    "LPology/Simple-Ajax-Uploader": "*",
     "yiisoft/yii2": "*"
   },
   "require-dev": {
@@ -27,19 +26,6 @@
     {
       "type": "composer",
       "url": "https://asset-packagist.org"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "LPology/Simple-Ajax-Uploader",
-        "version": "1.0",
-        "source": {
-          "url": "https://github.com/LPology/Simple-Ajax-Uploader",
-          "type": "git",
-
-          "reference": "master"
-        }
-      }
     }
   ],
   "config": {
