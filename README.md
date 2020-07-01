@@ -54,6 +54,30 @@ return [
 ];
 ```
 
+Если загружается картинка (jpg, jpeg, png) то она обрезается под формат `update`
+
+### Структура параметра `update`
+
+```php
+$update = [
+    [
+        'function' => 'crop',
+        'index'    => 'crop',
+        'options'  => [
+            'width'  => '300',
+            'height' => '300',
+            'mode'   => 'MODE_THUMBNAIL_CUT',
+        ],
+    ],
+];
+```
+
+## Cтандартный контроллер
+
+`\iAvatar777\assets\JqueryUpload1\Upload2Controller`
+
+Содержит действия для обработки загруженного изображения `actionFileUpload7` и `actionFileUpload8`, действие `actionSessionProgress` для обработки индикатора загрузки файла которое указывается в параметре `sessionProgressUrl`.
+
 ## Пример использования
 
 ```php

@@ -2,38 +2,7 @@
 
 namespace iAvatar777\assets\JqueryUpload1;
 
-use app\models\Article;
-use app\models\SiteUpdate;
-use avatar\models\forms\Contact;
-use avatar\services\LogReader;
-use common\components\providers\ETH;
-use common\components\sms\IqSms;
-use common\models\avatar\Currency;
-use common\models\avatar\UserBill;
-use common\models\CompanyCustomizeItem;
-use common\models\Land;
-use common\models\PaymentBitCoin;
-use common\models\UserAvatar;
-use common\models\UserRegistration;
-use common\payment\BitCoinBlockTrailPayment;
-use common\services\Security;
-use common\widgets\FileUpload7\FileUpload;
-use cs\Application;
-use cs\base\BaseController;
-use cs\services\UploadFolderDispatcher;
-use cs\services\VarDumper;
-use cs\web\Exception;
 use Yii;
-use yii\base\UserException;
-use yii\db\Connection;
-use yii\db\Query;
-use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
-use yii\helpers\FileHelper;
-use yii\helpers\Json;
-use yii\helpers\Url;
-use yii\web\ForbiddenHttpException;
-use yii\web\Response;
 
 class Upload2Controller extends \yii\web\Controller
 {
@@ -129,5 +98,55 @@ class Upload2Controller extends \yii\web\Controller
         ];
     }
 
+
+    /**
+     * Возвращает стандартный ответ JSON при отрицательном срабатывании
+     * https://redmine.suffra.com/projects/suffra/wiki/Стандартный_ответ_JSON
+     *
+     * @param mixed $data [optional] возвращаемые данные
+     *
+     * @return \yii\web\Response json
+     */
+    public static function jsonError($data = null)
+    {
+        if (is_null($data)) $data = '';
+
+        return self::json([
+            'success' => false,
+            'data'    => $data,
+        ]);
+    }
+
+    /**
+     * Возвращает стандартный ответ JSON при отрицательном срабатывании
+     * https://redmine.suffra.com/projects/suffra/wiki/Стандартный_ответ_JSON
+     *
+     * @param integer $id   идентификатор ошибки
+     * @param mixed   $data [optional] возвращаемые данные
+     *
+     * @return \yii\web\Response json
+     */
+    public static function jsonErrorId($id, $data = null)
+    {
+        $return = [
+            'id' => $id,
+        ];
+        if (!is_null($data)) $return['data'] = $data;
+
+        return self::jsonError($return);
+    }
+
+    /**
+     * Закодировать в JSON
+     *
+     * @return \yii\web\Response json
+     * */
+    public static function json($array)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->data = $array;
+
+        return Yii::$app->response;
+    }
 
 }

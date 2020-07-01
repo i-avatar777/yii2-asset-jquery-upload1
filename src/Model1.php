@@ -2,15 +2,9 @@
 
 namespace iAvatar777\assets\JqueryUpload1;
 
-use common\models\school\File;
-use cs\Application;
-use cs\services\Str;
-use cs\services\Url;
-use cs\services\VarDumper;
 use Imagine\Image\Box;
 use Yii;
 use yii\base\Model;
-use cs\Widget\FileUpload2\FileUpload;
 use yii\data\ActiveDataProvider;
 use yii\data\Sort;
 use yii\db\ActiveQuery;
@@ -34,7 +28,6 @@ class Model1 extends Model
 
     /** вписать с фоном */
     const MODE_THUMBNAIL_WHITE = 'white';
-
 
     /** @var  string */
     public $signature;
@@ -64,7 +57,6 @@ class Model1 extends Model
             ['update', 'validateJson'],
         ];
     }
-
 
     public function validateJson($attribute, $params)
     {
@@ -129,48 +121,48 @@ class Model1 extends Model
             'size'    => $size,
         ];
 
-        if ($this->updateJson) {
-            $updateRet = [];
-            foreach ($this->updateJson as $item) {
-                $function = $item['function'];
-                $index = $item['index'];
-                $options = $item['options'];
-                $file = \iAvatar777\assets\JqueryUpload1\File::path($path . $Upload->newFileName);
-                $destination = new \iAvatar777\assets\JqueryUpload1\SitePath('/upload/cloud/' . $folderName . '/'. $fileNameWithoutExt . '_' . $index . '.' . $ext);
-                if ($function == 'crop') {
-                    $mode = 'outbound';
-                    if ($options['mode'] == 'MODE_THUMBNAIL_CUT') $mode = 'outbound';
-                    if ($options['mode'] == 'MODE_THUMBNAIL_FIELDS') $mode = 'inset';
-                    if ($options['mode'] == 'MODE_THUMBNAIL_WHITE') $mode = 'white';
-                    self::saveImage(
-                        $file,
-                        $destination,
-                        [
-                            $options['width'],
-                            $options['height'],
-                            $mode,
-                            'quality' => \yii\helpers\ArrayHelper::getValue($options, 'quality', 100),
-                        ]
-                    );
+        if (in_array($ext, ['jpg', 'jpeg', 'png'])) {
+            if ($this->updateJson) {
+                $updateRet = [];
+                foreach ($this->updateJson as $item) {
+                    $function = $item['function'];
+                    $index = $item['index'];
+                    $options = $item['options'];
+                    $file = \iAvatar777\assets\JqueryUpload1\File::path($path . $Upload->newFileName);
+                    $destination = new \iAvatar777\assets\JqueryUpload1\SitePath('/upload/cloud/' . $folderName . '/'. $fileNameWithoutExt . '_' . $index . '.' . $ext);
+                    if ($function == 'crop') {
+                        $mode = 'outbound';
+                        if ($options['mode'] == 'MODE_THUMBNAIL_CUT') $mode = 'outbound';
+                        if ($options['mode'] == 'MODE_THUMBNAIL_FIELDS') $mode = 'inset';
+                        if ($options['mode'] == 'MODE_THUMBNAIL_WHITE') $mode = 'white';
+                        self::saveImage(
+                            $file,
+                            $destination,
+                            [
+                                $options['width'],
+                                $options['height'],
+                                $mode,
+                                'quality' => \yii\helpers\ArrayHelper::getValue($options, 'quality', 100),
+                            ]
+                        );
 
-                    // Добавляю в БД
-                    $path = Yii::getAlias('@webroot' . $destination->getPath());
-                    if (file_exists($path)) {
-                        $size = filesize($path);
-                    } else {
-                        $size = 0;
+                        // Добавляю в БД
+                        $path = Yii::getAlias('@webroot' . $destination->getPath());
+                        if (file_exists($path)) {
+                            $size = filesize($path);
+                        } else {
+                            $size = 0;
+                        }
+
+                        $updateRet[$index] = [
+                            'url'  => \yii\helpers\Url::to($destination->getPath(), true),
+                            'size' => $size,
+                        ];
                     }
-
-                    $updateRet[$index] = [
-                        'url'  => \yii\helpers\Url::to($destination->getPath(), true),
-                        'size' => $size,
-                    ];
                 }
+                $ret['update'] = $updateRet;
             }
-            $ret['update'] = $updateRet;
         }
-
-
 
         return $ret;
     }
