@@ -78,6 +78,8 @@ class Model1 extends Model
     {
         // '@upload/cloud'
         $upload_dir = Yii::getAlias(ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.uploadDirectory', '@webroot/upload/cloud'));
+        $upload_dir2 = Yii::getAlias('@webroot');
+        $upload_path = substr($upload_dir, strlen($upload_dir2));
 
         $Upload = new extras\FileUpload(ArrayHelper::getValue(\Yii::$app->params, 'widgetFileUpload7.inputName', 'imgname'));
 
@@ -129,7 +131,7 @@ class Model1 extends Model
                     $index = $item['index'];
                     $options = $item['options'];
                     $file = \iAvatar777\assets\JqueryUpload1\File::path($path . $Upload->newFileName);
-                    $destination = new \iAvatar777\assets\JqueryUpload1\SitePath('/upload/cloud/' . $folderName . '/'. $fileNameWithoutExt . '_' . $index . '.' . $ext);
+                    $destination = new \iAvatar777\assets\JqueryUpload1\SitePath($upload_path . '/' . $folderName . '/'. $fileNameWithoutExt . '_' . $index . '.' . $ext);
                     if ($function == 'crop') {
                         $mode = 'outbound';
                         if ($options['mode'] == 'MODE_THUMBNAIL_CUT') $mode = 'outbound';
