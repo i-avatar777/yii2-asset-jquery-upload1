@@ -108,12 +108,12 @@ class Model1 extends Model
         }
 
         $path = $upload_dir2;
-        $size = filesize($path . $Upload->newFileName);
 
         $fileName = $Upload->getFileName();
         $upload_dir1 = \Yii::getAlias('@webroot');
 
         copy($_FILES['imgfile']['tmp_name'], $path . $fileName);
+        $size = filesize($path . $Upload->newFileName);
 
         $ret = [
             'success' => true,
